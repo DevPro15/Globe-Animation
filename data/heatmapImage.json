@@ -1,0 +1,313 @@
+{
+  "version": 8,
+  "id": "hybrid",
+  "name": "Satellite Hybrid",
+  "sources": {
+    "maptiler_planet": {
+      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key=792pTLQN9x7S0DazHxQ9",
+      "type": "vector"
+    },
+    "satellite": {
+      "url": "https://api.maptiler.com/tiles/satellite-v2/tiles.json?key=792pTLQN9x7S0DazHxQ9",
+      "type": "raster"
+    }
+  },
+  "layers": [
+    {
+      "id": "Satellite",
+      "type": "raster",
+      "source": "satellite",
+      "minzoom": 0,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "raster-opacity": 1
+      },
+      "filter": ["all"]
+    },
+    {
+      "id": "Tunnel",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "transportation",
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "miter",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsla(0, 0%, 100%, 0.2)",
+        "line-dasharray": [0.28, 0.14],
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          6,
+          0.5,
+          20,
+          30
+        ]
+      },
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["==", "brunnel", "tunnel"],
+        ["in", "class", "motorway", "primary", "secondary", "tertiary", "trunk"]
+      ]
+    },
+    {
+      "id": "Path minor",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "transportation",
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsla(0, 0%, 97%, 0.33)",
+        "line-dasharray": [1, 1],
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          14,
+          0.5,
+          20,
+          4
+        ]
+      },
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "path_pedestrian"]
+      ]
+    },
+    {
+      "id": "Path",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "transportation",
+      "layout": {
+        "line-cap": "square",
+        "line-join": "bevel",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsla(0, 0%, 97%, 0.33)",
+        "line-dasharray": [1, 1],
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          14,
+          0.5,
+          20,
+          4
+        ]
+      },
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["in", "class", "path", "track"]
+      ]
+    },
+    {
+      "id": "Road",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "transportation",
+      "minzoom": 6,
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": {
+          "stops": [
+            [8, "hsla(0, 0%, 100%, 0.2)"],
+            [14, "hsla(0, 0%, 100%, 0.4)"],
+            [18, "hsla(0, 0%, 100%, 0.5)"]
+          ]
+        },
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5,
+          ["match", ["get", "class"], ["motorway", "motorway_link"], 1, 0],
+          7,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "motorway_link", "trunk"],
+            1.4,
+            0
+          ],
+          8,
+          [
+            "match",
+            ["get", "class"],
+            ["motorway", "motorway_link", "primary", "trunk"],
+            0.75,
+            0
+          ],
+          9,
+          ["match", ["get", "class"], ["secondary", "tertiary"], 0.7, 1],
+          10,
+          ["match", ["get", "class"], ["motorway", "motorway_link"], 1.3, 1.3],
+          14,
+          ["match", ["get", "class"], ["minor", "service"], 0.5, 2.4]
+        ]
+      },
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["!in", "class", "rail", "ferry", "path", "track"],
+        ["!=", "brunnel", "tunnel"]
+      ]
+    },
+    {
+      "id": "Railway",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "transportation",
+      "minzoom": 11,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsla(34, 12%, 66%, 0.2)",
+        "line-opacity": ["interpolate", ["linear"], ["zoom"], 11, 0.5, 16, 1.3]
+      },
+      "filter": ["==", "class", "rail"]
+    },
+    {
+      "id": "Other border",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "boundary",
+      "minzoom": 3,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsla(0, 0%, 76%, 0.5)",
+        "line-dasharray": [2, 1]
+      },
+      "filter": [
+        "all",
+        ["in", "admin_level", 3, 4, 5, 6, 7, 8],
+        ["==", "maritime", 0],
+        ["==", "disputed", 0]
+      ]
+    },
+    {
+      "id": "Country dark border",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "boundary",
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsla(0, 0%, 0%, 0.51)",
+        "line-offset": 1,
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          3,
+          0.5,
+          9,
+          1.5,
+          22,
+          32
+        ]
+      },
+      "filter": [
+        "all",
+        ["==", "admin_level", 2],
+        ["==", "maritime", 0],
+        ["==", "disputed", 0]
+      ]
+    },
+    {
+      "id": "Disputed border",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "boundary",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(0, 0%, 94%)",
+        "line-dasharray": [2, 4],
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          3,
+          0.5,
+          9,
+          1.5,
+          22,
+          32
+        ]
+      },
+      "filter": [
+        "all",
+        ["<=", "admin_level", 2],
+        ["==", "maritime", 0],
+        ["==", "disputed", 1]
+      ]
+    },
+    {
+      "id": "Country border",
+      "type": "line",
+      "source": "maptiler_planet",
+      "source-layer": "boundary",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(0, 0%, 94%)",
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          3,
+          0.5,
+          9,
+          1.5,
+          22,
+          32
+        ]
+      },
+      "filter": [
+        "all",
+        ["==", "admin_level", 2],
+        ["==", "maritime", 0],
+        ["==", "disputed", 0]
+      ]
+    }
+  ],
+  "metadata": {
+    "maptiler:copyright": "You are licensed to use the style or its derivate for serving map tiles exclusively with MapTiler Server or MapTiler Cloud and in accordance with their licenses and terms. If you plan to use the style in a different way, contact us at sales@maptiler.com."
+  },
+  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=792pTLQN9x7S0DazHxQ9",
+  "sprite": "https://api.maptiler.com/maps/hybrid/sprite",
+  "bearing": 0,
+  "pitch": 0,
+  "center": [0, 0],
+  "zoom": 1
+}
