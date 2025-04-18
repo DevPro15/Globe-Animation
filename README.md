@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+````markdown
+# 🌍 Globe Animation
 
-## Getting Started
+An interactive 3D globe visualization built using **React Three Fiber**, **Three.js**, and **MapLibre GL**, styled with **Tailwind CSS**. This project showcases animated globe-based data visuals alongside an interactive heatmap powered by MapLibre.
 
-First, run the development server:
+---
+
+## Visual
+
+![Satellite Heatmap Globe](image.png)
+![Animated Globe](image-1.png)
+
+## 🚀 Features
+
+- 🌐 3D animated globe using `three-globe`
+- 📡 MapLibre integration with real-time heatmap layers
+- 🌀 Smooth animations with `@react-three/fiber` & `motion`
+- 💅 Utility-first styling with Tailwind CSS
+- 🧭 Globe controls, terrain overlays, and sky atmosphere effects
+
+---
+
+## 📦 Tech Stack
+
+| Technology        | Description                          |
+| ----------------- | ------------------------------------ |
+| Next.js           | React Framework with SSR/SSG support |
+| React Three Fiber | React renderer for Three.js          |
+| MapLibre GL       | Open-source WebGL map rendering      |
+| Three.js          | 3D graphics library                  |
+| Tailwind CSS      | Utility-first CSS framework          |
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/globe-animation.git
+cd globe-animation
+```
+````
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧪 Scripts
 
-## Learn More
+| Command         | Description                  |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start the development server |
+| `npm run build` | Create a production build    |
+| `npm run start` | Start the production server  |
+| `npm run lint`  | Run ESLint checks            |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🖼️ Preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+_Include a screenshot or GIF here if applicable._
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+.
+├── components/     # Reusable components
+├── data/           # GeoJSON / heatmap data
+├── public/         # Static assets
+├── styles/         # Tailwind and global styles
+├── pages/          # Next.js pages
+├── utils/          # Helper functions
+└── ...
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🔗 Acknowledgements
+
+- [MapLibre](https://maplibre.org/)
+- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+- [Three.js](https://threejs.org/)
+- [three-globe](https://github.com/vasturiano/three-globe)
+
+```
+
+---
+
+Let me know if you'd like a minimal version, dark-mode screenshots, or instructions for deploying it to Vercel.
+```
