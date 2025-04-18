@@ -32,12 +32,12 @@ const MapHeatmap = () => {
           ...nextStyle.sources,
           terrainSource: {
             type: "raster-dem",
-            url: "https://api.maptiler.com/tiles/terrain-rgb-v2/tiles.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+            url: "https://api.maptiler.com/tiles/terrain-rgb-v2/tiles.json?key=792pTLQN9x7S0DazHxQ9",
             tileSize: 256,
           },
           hillshadeSource: {
             type: "raster-dem",
-            url: "https://api.maptiler.com/tiles/terrain-rgb-v2/tiles.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+            url: "https://api.maptiler.com/tiles/terrain-rgb-v2/tiles.json?key=792pTLQN9x7S0DazHxQ9",
             tileSize: 256,
           },
         };
