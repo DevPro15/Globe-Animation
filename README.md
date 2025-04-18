@@ -1,14 +1,17 @@
-````markdown
 # 🌍 Globe Animation
 
 An interactive 3D globe visualization built using **React Three Fiber**, **Three.js**, and **MapLibre GL**, styled with **Tailwind CSS**. This project showcases animated globe-based data visuals alongside an interactive heatmap powered by MapLibre.
 
 ---
 
-## Visual
+##  🖼️ Preview
+Satellite Heatmap Globe
 
-![Satellite Heatmap Globe](image.png)
-![Animated Globe](image-1.png)
+![Satellite Heatmap Globe](https://github.com/user-attachments/assets/a90cf24d-57f9-4c1e-852c-0d378649b1ce)
+
+Animated Globe
+
+![Animated Globe](https://github.com/user-attachments/assets/b8762d97-3eca-4c59-8228-df10dcbc870b)
 
 ## 🚀 Features
 
@@ -37,7 +40,7 @@ An interactive 3D globe visualization built using **React Three Fiber**, **Three
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/globe-animation.git
+git clone https://github.com/Devpro15/globe-animation.git
 cd globe-animation
 ```
 ````
@@ -69,22 +72,15 @@ Open [http://localhost:3000](http://localhost:3000) to view the app in your brow
 
 ---
 
-## 🖼️ Preview
-
-_Include a screenshot or GIF here if applicable._
-
----
-
 ## 📁 Project Structure
 
 ```
 .
-├── components/     # Reusable components
+├── components/ui/     # Reusable components
 ├── data/           # GeoJSON / heatmap data
 ├── public/         # Static assets
-├── styles/         # Tailwind and global styles
-├── pages/          # Next.js pages
-├── utils/          # Helper functions
+├── app/          # Next.js pages
+├── lib/          # Helper functions
 └── ...
 ```
 
@@ -109,9 +105,3 @@ This project is licensed under the [MIT License](LICENSE).
 - [Three.js](https://threejs.org/)
 - [three-globe](https://github.com/vasturiano/three-globe)
 
-```
-
----
-
-Let me know if you'd like a minimal version, dark-mode screenshots, or instructions for deploying it to Vercel.
-```
