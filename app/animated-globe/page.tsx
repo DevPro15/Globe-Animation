@@ -1,8 +1,14 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
+import dynamic from "next/dynamic";
 
-import { World } from "@/components/ui/globe";
+const World = dynamic(
+  () => import("@/components/ui/globe").then((mod) => mod.World),
+  {
+    ssr: false,
+  }
+);
 
 export default function Globe() {
   const globeConfig = {
